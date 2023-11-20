@@ -57,7 +57,7 @@ export function useFormValueBroker(
 					queuedEvent.value.eventValue,
 					queuedEvent.value.emitEventType
 				);
-				queuedEvent.value = null;	
+				queuedEvent.value = null;
 			};
 			customCallback?.();
 		};

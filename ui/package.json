@@ -22,18 +22,19 @@
 		"vega-embed": "^6.22.1",
 		"vega-lite": "^5.7.1",
 		"vue": "^3.2.47",
-		"vue-dompurify-html": "^4.1.4"
+		"vue-dompurify-html": "^4.1.4",
+		"vue3-slider": "^1.9.0"
 	},
 	"devDependencies": {
 		"@rushstack/eslint-patch": "^1.2.0",
 		"@types/marked": "^5.0.1",
 		"@vitejs/plugin-vue": "^4.2.1",
-		"volar-service-vetur": "latest",
 		"@vue/eslint-config-prettier": "^8.0.0",
 		"eslint": "^8.39.0",
 		"eslint-plugin-vue": "^9.11.0",
 		"prettier": "^3.0.1",
 		"vite": "^4.4.9",
-		"vite-plugin-monaco-editor": "^1.1.0"
+		"vite-plugin-monaco-editor": "^1.1.0",
+		"volar-service-vetur": "latest"
 	}
 }

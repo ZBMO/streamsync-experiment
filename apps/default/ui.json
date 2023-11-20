@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "streamsync_version": "0.1.4"
+        "streamsync_version": "0.2.7"
     },
     "components": {
         "root": {
@@ -74,7 +74,7 @@
             "parentId": "0d05bc9f-1655-4d0b-bc9b-c2f4c71a5117",
             "position": 0,
             "handlers": {
-                "click": "decrement"
+                "ss-click": "decrement"
             },
             "visible": true
         },
@@ -142,6 +142,43 @@
             "content": {},
             "parentId": "d4a5e62c-c6fe-49c4-80d4-33862af8727d",
             "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "this-is-a-custom-input-for-channel-A": {
+            "id": "this-is-a-custom-input-for-channel-A",
+            "type": "custom_coretextinputcopy",
+            "content": {
+                "label": "this is special now"
+            },
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "position": 2,
+            "handlers": {
+                "ss-change": "check_payload",
+                "ss-change-finish": "check_payload"
+            },
+            "visible": true
+        },
+        "78yc4xbf04a3gjmh": {
+            "id": "78yc4xbf04a3gjmh",
+            "type": "custom_coresectioncopy",
+            "content": {
+                "title": "Section Title",
+                "snapMode": "no"
+            },
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "position": 3,
+            "handlers": {},
+            "visible": true
+        },
+        "6a0xvj4id4odwtb5": {
+            "id": "6a0xvj4id4odwtb5",
+            "type": "textinput",
+            "content": {
+                "label": "Input Label"
+            },
+            "parentId": "78yc4xbf04a3gjmh",
+            "position": 0,
             "handlers": {},
             "visible": true
         }
