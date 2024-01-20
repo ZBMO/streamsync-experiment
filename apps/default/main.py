@@ -1,40 +1,44 @@
 import streamsync as ss
 
-# This is a placeholder to get you started or refresh your memory.
-# Delete it or adapt it as necessary.
-# Documentation is available at https://streamsync.cloud
+print("Good day sir!")
 
-# Shows in the log when the app starts
-print("Hello world!")
+def click_handler(state, payload):
+    if (payload == None): 
+        print("no payload found")
+    else:
+        if (payload["id"] == "set-power"):
+            state["power"] = state["temp_power"]
+        if (payload["id"] == "set-target"):
+            state["target"] = state["temp_target"]
+        
 
-# Its name starts with _, so this function won't be exposed
-def _update_message(state):
-    is_even = state["counter"] % 2 == 0
-    message = ("+Even" if is_even else "-Odd")
-    state["message"] = message
-
-def decrement(state):
-    state["counter"] -= 1
-    _update_message(state)
-
-def increment(state):
-    state["counter"] += 1
-    # Shows in the log when the event handler is run
-    print(f"The counter has been incremented.")
-    _update_message(state)
+def input_handler(state, payload):
+    print("input payload:") 
+    print(payload)
+    if (payload["id"] == "laser-power"):
+        state["temp_power"] = payload["value"]
+    if (payload["id"] == "laser-target"):
+        state["temp_target"] = payload["value"]
     
+        
+
+def select_handler(state, payload):
+    print("select handler")
+    print(payload)
+    state["inputs_disabled"] = payload["value"]
+    
+
 # Initialise the state
-
-# "_my_private_element" won't be serialised or sent to the frontend,
-# because it starts with an underscore
-
 initial_state = ss.init_state({
     "my_app": {
-        "title": "My App"
+        "title": "giga pulse 2000"
     },
-    "_my_private_element": 1337,
-    "message": None,
-    "counter": 26,
+    "input_value": None,
+    "selector_value": None,
+    "inputs_disabled": "no",
+    "temp_power": "5200",
+    "temp_target": "",
+    "target": "",
+    "power": 0,
+    "my_var": "dooot",   
 })
-
-_update_message(initial_state)

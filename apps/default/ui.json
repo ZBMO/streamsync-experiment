@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "streamsync_version": "0.1.4"
+        "streamsync_version": "0.2.8"
     },
     "components": {
         "root": {
@@ -37,111 +37,210 @@
             "handlers": {},
             "visible": true
         },
-        "28d3885b-0fb8-4d41-97c6-978540015431": {
-            "id": "28d3885b-0fb8-4d41-97c6-978540015431",
-            "type": "section",
+        "5xfassmzz91u4fqk": {
+            "id": "5xfassmzz91u4fqk",
+            "type": "custom_customsection",
             "content": {
-                "title": "",
-                "snapMode": "no",
-                "containerShadow": "0px 4px 11px -12px #000000"
+                "title": "section 1",
+                "snapMode": "no"
             },
             "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
             "position": 1,
-            "handlers": {},
-            "visible": true
-        },
-        "9556c0e3-8584-4ac9-903f-908a775a33ec": {
-            "id": "9556c0e3-8584-4ac9-903f-908a775a33ec",
-            "type": "button",
-            "content": {
-                "text": " Increment",
-                "icon": "arrow-up"
-            },
-            "parentId": "0d05bc9f-1655-4d0b-bc9b-c2f4c71a5117",
-            "position": 1,
             "handlers": {
-                "click": "increment"
+                "click": "click_handler",
+                "input": "input_handler",
+                "change": "select_handler"
             },
             "visible": true
         },
-        "51d1554e-1b88-461c-9353-1419cba0053a": {
-            "id": "51d1554e-1b88-461c-9353-1419cba0053a",
-            "type": "button",
+        "yw36fommnqqlfi9c": {
+            "id": "yw36fommnqqlfi9c",
+            "type": "custom_customdropdown",
             "content": {
-                "text": "Decrement",
-                "icon": "arrow-down"
+                "label": "DEATH STAR LASER",
+                "customId": "laser-toggle",
+                "options": "{\n  \"yes\": \"ON\",\n  \"no\": \"OFF\"\n}"
             },
-            "parentId": "0d05bc9f-1655-4d0b-bc9b-c2f4c71a5117",
-            "position": 0,
-            "handlers": {
-                "click": "decrement"
-            },
-            "visible": true
-        },
-        "0d05bc9f-1655-4d0b-bc9b-c2f4c71a5117": {
-            "id": "0d05bc9f-1655-4d0b-bc9b-c2f4c71a5117",
-            "type": "horizontalstack",
-            "content": {
-                "alignment": "left"
-            },
-            "parentId": "f3777e75-3659-4d44-8ef7-aeec0d06855b",
+            "parentId": "3wtzxaiwrbvgqshf",
             "position": 0,
             "handlers": {},
-            "visible": true
-        },
-        "172a14df-f73a-44fa-8fb1-e8648e7d32d2": {
-            "id": "172a14df-f73a-44fa-8fb1-e8648e7d32d2",
-            "type": "metric",
-            "content": {
-                "metricValue": "@{counter}",
-                "note": "@{message}",
-                "name": "Counter"
+            "binding": {
+                "eventType": "ss-option-change",
+                "stateRef": "inputs_disabled"
             },
-            "parentId": "c2519671-9ce7-44e7-ba4e-b0efda9cb20e",
-            "position": 0,
-            "handlers": {},
             "visible": true
         },
-        "d4a5e62c-c6fe-49c4-80d4-33862af8727d": {
-            "id": "d4a5e62c-c6fe-49c4-80d4-33862af8727d",
+        "ecxpr4ymofpl08ax": {
+            "id": "ecxpr4ymofpl08ax",
             "type": "columns",
             "content": {},
-            "parentId": "28d3885b-0fb8-4d41-97c6-978540015431",
+            "parentId": "5xfassmzz91u4fqk",
             "position": 0,
             "handlers": {},
             "visible": true
         },
-        "f3777e75-3659-4d44-8ef7-aeec0d06855b": {
-            "id": "f3777e75-3659-4d44-8ef7-aeec0d06855b",
-            "type": "column",
-            "content": {
-                "title": "",
-                "width": "1",
-                "verticalAlignment": "center",
-                "horizontalAlignment": "center"
-            },
-            "parentId": "d4a5e62c-c6fe-49c4-80d4-33862af8727d",
-            "position": 2,
-            "handlers": {},
-            "visible": true
-        },
-        "c2519671-9ce7-44e7-ba4e-b0efda9cb20e": {
-            "id": "c2519671-9ce7-44e7-ba4e-b0efda9cb20e",
+        "3wtzxaiwrbvgqshf": {
+            "id": "3wtzxaiwrbvgqshf",
             "type": "column",
             "content": {
                 "width": "1"
             },
-            "parentId": "d4a5e62c-c6fe-49c4-80d4-33862af8727d",
+            "parentId": "ecxpr4ymofpl08ax",
             "position": 0,
             "handlers": {},
             "visible": true
         },
-        "d4a71819-7444-4083-a1c7-7995452a7abf": {
-            "id": "d4a71819-7444-4083-a1c7-7995452a7abf",
+        "rza8f45mf8u4weh0": {
+            "id": "rza8f45mf8u4weh0",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "ecxpr4ymofpl08ax",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "ldc61rqxud3l3mma": {
+            "id": "ldc61rqxud3l3mma",
+            "type": "custom_customtextinput",
+            "content": {
+                "label": "laser power:",
+                "customId": "laser-power",
+                "placeholder": ""
+            },
+            "parentId": "rza8f45mf8u4weh0",
+            "position": 0,
+            "binding": {
+                "eventType": "ss-change",
+                "stateRef": "temp_power"
+            },
+            "visible": true
+        },
+        "mc29r0zgdduuvozw": {
+            "id": "mc29r0zgdduuvozw",
+            "type": "custom_custombutton",
+            "content": {
+                "text": "SET POWER LEVEL",
+                "customId": "set-power",
+                "isDisabled": "@{inputs_disabled}"
+            },
+            "parentId": "rza8f45mf8u4weh0",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "1alr47j8phuj0rod": {
+            "id": "1alr47j8phuj0rod",
+            "type": "columns",
+            "content": {},
+            "parentId": "5xfassmzz91u4fqk",
+            "position": 2,
+            "handlers": {},
+            "visible": true
+        },
+        "c5s5zqkq01w2t19q": {
+            "id": "c5s5zqkq01w2t19q",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "1alr47j8phuj0rod",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "a5xqhsfc4yjcyxr1": {
+            "id": "a5xqhsfc4yjcyxr1",
             "type": "separator",
             "content": {},
-            "parentId": "d4a5e62c-c6fe-49c4-80d4-33862af8727d",
+            "parentId": "5xfassmzz91u4fqk",
             "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "mn20rsayjbhim04h": {
+            "id": "mn20rsayjbhim04h",
+            "type": "text",
+            "content": {
+                "text": "@{target}"
+            },
+            "parentId": "c5s5zqkq01w2t19q",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "desskid0x4v5nmes": {
+            "id": "desskid0x4v5nmes",
+            "type": "heading",
+            "content": {
+                "text": "TARGET"
+            },
+            "parentId": "c5s5zqkq01w2t19q",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "w7wiiyf28cxp27hy": {
+            "id": "w7wiiyf28cxp27hy",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "1alr47j8phuj0rod",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "gvaobol86wklpnzf": {
+            "id": "gvaobol86wklpnzf",
+            "type": "heading",
+            "content": {
+                "text": "POWER"
+            },
+            "parentId": "w7wiiyf28cxp27hy",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "zpg920cslfcrhnxz": {
+            "id": "zpg920cslfcrhnxz",
+            "type": "text",
+            "content": {
+                "text": "@{power}"
+            },
+            "parentId": "w7wiiyf28cxp27hy",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "m6mldqi9l173omhl": {
+            "id": "m6mldqi9l173omhl",
+            "type": "custom_customtextinput",
+            "content": {
+                "label": "TARGET:",
+                "customId": "laser-target",
+                "placeholder": "alderaan"
+            },
+            "parentId": "rza8f45mf8u4weh0",
+            "position": 2,
+            "handlers": {},
+            "binding": {
+                "eventType": "ss-change",
+                "stateRef": "@{temp_target}"
+            },
+            "visible": true
+        },
+        "6czltmkzwe76t76j": {
+            "id": "6czltmkzwe76t76j",
+            "type": "custom_custombutton",
+            "content": {
+                "text": "LOCK TARGET",
+                "customId": "set-target",
+                "isDisabled": "@{inputs_disabled}"
+            },
+            "parentId": "rza8f45mf8u4weh0",
+            "position": 3,
             "handlers": {},
             "visible": true
         }

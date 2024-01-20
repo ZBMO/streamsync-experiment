@@ -6,7 +6,8 @@
 	v-on:click.capture="captureClick" 
     >
 		<h2 v-if="fields.title.value">{{ fields.title.value }} CUSTOM SECTION</h2>
-		<div data-streamsync-container 
+		<div data-streamsync-container
+		v-on:input.capture="captureInput"
 		v-on:change.capture="captureChange"
 		><slot></slot></div>
 	</section>
@@ -79,14 +80,14 @@ import injectionKeys from "../injectionKeys";
 
 const ss = inject(injectionKeys.core);
 const instancePath = inject(injectionKeys.instancePath);
+const disablingIds = ["laser-toggle"]
+var inputsDisabled = false
 
-function getComponentId(event: Event): string {
-	const targetEl: HTMLElement = (event.target as HTMLElement).closest(
-		"[data-streamsync-id]"
-	);
 
-	const componentId = targetEl.dataset.streamsyncId;
-	return componentId
+function toggleDisableInputs(id: string, value: String) {
+	if (disablingIds.includes(id)) {
+		inputsDisabled = (value == "yes") ? true : false
+	}
 }
 
 function getIdentifier(event: Event): string {
@@ -113,6 +114,7 @@ function isCorrectInputType(event: Event, expectedTypes): boolean {
 function captureClick(event: Event) {
     event.stopPropagation()
     if (!isCorrectInputType(event, ["BUTTON"])) { return }
+	if (inputsDisabled) { return }
 
 	const customId = getIdentifier(event)
 	const customEvent = new CustomEvent("click", {
@@ -125,8 +127,30 @@ function captureClick(event: Event) {
 	ss.forwardEvent(customEvent, instancePath, true)
 }
 
+function captureInput(event: Event) {
+    event.stopPropagation()
+    if (!isCorrectInputType(event, ["INPUT"])) { return }
+	if (inputsDisabled) { return }
+
+	const componentId = getIdentifier(event)
+	const inputValue = (<HTMLInputElement>event.target).value
+
+	
+	const customEvent = new CustomEvent("input", {
+		detail: {
+			payload: {
+				id: componentId,
+				value: inputValue
+			},
+		},
+	});
+
+
+	ss.forwardEvent(customEvent, instancePath, true)
+}
+
 function captureChange(event: Event) {
-	event.stopPropagation()
+	// event.stopPropagation()
     if (!isCorrectInputType(event, ["SELECT", "INPUT"])) { return }
 
 	const componentId = getIdentifier(event)
@@ -140,6 +164,17 @@ function captureChange(event: Event) {
 		},
 	});
 
+
+	// const targetEl: HTMLElement = (event.target as HTMLElement).closest(
+	// 	"[data-streamsync-id]"
+	// );
+
+	// var component = ss.getComponentById(targetEl.dataset.streamsyncId)
+
+	// component.content.value = inputValue
+
+
+	toggleDisableInputs(componentId, inputValue)
 	ss.forwardEvent(customEvent, instancePath, true)
 }
 

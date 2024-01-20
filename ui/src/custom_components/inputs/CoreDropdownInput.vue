@@ -76,9 +76,9 @@ import { useFormValueBroker } from "../../renderer/useFormValueBroker";
 const fields = inject(injectionKeys.evaluatedFields);
 const rootEl: Ref<HTMLElement> = ref(null);
 const ss = inject(injectionKeys.core);
-const instancePath = inject(injectionKeys.instancePath);
+const componentId = inject(injectionKeys.componentId);
 
-const { formValue, handleInput } = useFormValueBroker(ss, instancePath, rootEl);
+const { formValue, handleInput } = useFormValueBroker(ss, componentId, rootEl);
 </script>
 
 <style scoped>
