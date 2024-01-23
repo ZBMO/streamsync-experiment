@@ -7,6 +7,7 @@
     >
 		<h2 v-if="fields.title.value">{{ fields.title.value }} CUSTOM SECTION</h2>
 		<div data-streamsync-container
+		v-on:focusout="logFocus"
 		v-on:input.capture="captureInput"
 		v-on:change.capture="captureChange"
 		><slot></slot></div>
@@ -96,10 +97,6 @@ function getIdentifier(event: Event): string {
 	);
 
 	var component = ss.getComponentById(targetEl.dataset.streamsyncId)
-
-	console.log('target component: ')
-	console.log(component)
-
 	var customId = component.content["customId"]
 	var defaultId = targetEl.dataset.streamsyncId
 
@@ -109,6 +106,11 @@ function getIdentifier(event: Event): string {
 function isCorrectInputType(event: Event, expectedTypes): boolean {
     const type = (<HTMLInputElement>event.target).nodeName	
     return expectedTypes.includes(type)
+}
+
+function logFocus(event: Event) {
+	console.log('focusOUt event')
+	console.log(event)
 }
 
 function captureClick(event: Event) {
@@ -150,7 +152,7 @@ function captureInput(event: Event) {
 }
 
 function captureChange(event: Event) {
-	// event.stopPropagation()
+	event.stopPropagation()
     if (!isCorrectInputType(event, ["SELECT", "INPUT"])) { return }
 
 	const componentId = getIdentifier(event)
@@ -163,15 +165,6 @@ function captureChange(event: Event) {
 			},
 		},
 	});
-
-
-	// const targetEl: HTMLElement = (event.target as HTMLElement).closest(
-	// 	"[data-streamsync-id]"
-	// );
-
-	// var component = ss.getComponentById(targetEl.dataset.streamsyncId)
-
-	// component.content.value = inputValue
 
 
 	toggleDisableInputs(componentId, inputValue)
