@@ -7,7 +7,6 @@
     >
 		<h2 v-if="fields.title.value">{{ fields.title.value }} CUSTOM SECTION</h2>
 		<div data-streamsync-container
-		v-on:focusout="logFocus"
 		v-on:input.capture="captureInput"
 		v-on:change.capture="captureChange"
 		><slot></slot></div>
@@ -82,12 +81,12 @@ import injectionKeys from "../injectionKeys";
 const ss = inject(injectionKeys.core);
 const instancePath = inject(injectionKeys.instancePath);
 const disablingIds = ["laser-toggle"]
-var inputsDisabled = false
+var buttonsDisabled = false
 
 
 function toggleDisableInputs(id: string, value: String) {
 	if (disablingIds.includes(id)) {
-		inputsDisabled = (value == "yes") ? true : false
+		buttonsDisabled = (value == "yes") ? true : false
 	}
 }
 
@@ -108,15 +107,10 @@ function isCorrectInputType(event: Event, expectedTypes): boolean {
     return expectedTypes.includes(type)
 }
 
-function logFocus(event: Event) {
-	console.log('focusOUt event')
-	console.log(event)
-}
-
 function captureClick(event: Event) {
     event.stopPropagation()
     if (!isCorrectInputType(event, ["BUTTON"])) { return }
-	if (inputsDisabled) { return }
+	if (buttonsDisabled) { return }
 
 	const customId = getIdentifier(event)
 	const customEvent = new CustomEvent("click", {
@@ -132,7 +126,6 @@ function captureClick(event: Event) {
 function captureInput(event: Event) {
     event.stopPropagation()
     if (!isCorrectInputType(event, ["INPUT"])) { return }
-	if (inputsDisabled) { return }
 
 	const componentId = getIdentifier(event)
 	const inputValue = (<HTMLInputElement>event.target).value
@@ -152,6 +145,7 @@ function captureInput(event: Event) {
 }
 
 function captureChange(event: Event) {
+	console.log('captureChange event')
 	event.stopPropagation()
     if (!isCorrectInputType(event, ["SELECT", "INPUT"])) { return }
 
