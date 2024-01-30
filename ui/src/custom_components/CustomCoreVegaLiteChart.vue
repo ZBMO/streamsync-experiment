@@ -1,5 +1,23 @@
 <template>
+	<div class="CoreNumberInput" ref="rootEl">
+		<label>{{ fields.label.value }}</label>
+		<input
+			type="number"
+			ref="inputEl"
+			v-on:input="handleInputEvent"
+			v-on:change="handleChangeEvent"
+			:value="formValue"
+			:placeholder="fields.placeholder.value"
+			:min="fields.minValue.value !== null ? fields.minValue.value : undefined"
+			:max="fields.maxValue.value !== null ? fields.maxValue.value : undefined"
+			:step="fields.valueStep.value !== null ? fields.valueStep.value : undefined"
+		/>
+	</div>
+
 	<div class="CoreVegaLiteChart" ref="rootEl">
+		<div>
+			
+		</div>
 		<div ref="chartTargetEl" class="target"></div>
 	</div>
 </template>
@@ -52,6 +70,35 @@ export default {
 				desc: "Vega-Lite chart specification. Pass a Vega Altair chart using state or paste a JSON specification.",
 				type: FieldType.Object,
 			},
+			customId: {
+				name: "CustomId",
+				init: "Input CustomId",
+				type: FieldType.Text,
+			},
+			label: {
+				name: "Label",
+				init: "Input Label",
+				type: FieldType.Text,
+			},
+			placeholder: {
+				name: "Placeholder",
+				type: FieldType.Text,
+			},
+			minValue: {
+				name: "Minimum value",
+				type: FieldType.Number,
+				default: null
+			},
+			maxValue: {
+				name: "Max value",
+				type: FieldType.Number,
+				default: null
+			},
+			valueStep: {
+				name: "Step",
+				type: FieldType.Number,
+				default: "1"
+			},
 			cssClasses,
 		},
 	},
@@ -61,12 +108,50 @@ export default {
 <script setup lang="ts">
 import { inject, onMounted, Ref, ref, watch } from "vue";
 import injectionKeys from "../injectionKeys";
+import { useFormValueBroker } from "../renderer/useFormValueBroker";
 
 const rootEl: Ref<HTMLElement> = ref(null);
 const chartTargetEl: Ref<HTMLElement> = ref(null);
 const fields = inject(injectionKeys.evaluatedFields);
+const inputEl = ref(null);
+const ss = inject(injectionKeys.core);
+const componentId = inject(injectionKeys.componentId);
+
+const { formValue, handleInput } = useFormValueBroker(ss, componentId, rootEl);
+
+function enforceLimitsAndReturnValue() {
+	if (inputEl.value.value == "") return null;
+
+	let v:number = parseFloat(inputEl.value.value);
+	
+	if (isNaN(v)) return v;
+	if (fields.minValue.value !== null && v < fields.minValue.value) {
+		v = fields.minValue.value;
+		inputEl.value.value = v;
+	}
+	if (fields.maxValue.value !== null && v > fields.maxValue.value) {
+		v = fields.maxValue.value;
+		inputEl.value.value = v;
+	}
+	return v;
+}
+
+function handleInputEvent() {
+	console.log("handling handleInputEvent")
+	const v = enforceLimitsAndReturnValue();
+	if (isNaN(v)) return;
+	handleInput(v, 'ss-number-change');
+}
+
+function handleChangeEvent() {
+	console.log("handling handleChangeEvent")
+	const v = enforceLimitsAndReturnValue();
+	if (isNaN(v)) return;
+	handleInput(v, 'ss-number-change-finish');
+}
 
 const renderChart = async () => {
+	console.log("renderChart")
 	if (import.meta.env.SSR) return;
 	if (!fields.spec.value || !chartTargetEl.value) return;
 	const { default: embed } = await import("vega-embed");

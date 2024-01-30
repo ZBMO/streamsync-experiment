@@ -30,9 +30,28 @@ cssClasses,
 } from "../renderer/sharedStyleFields";
 import { assembleParameterSignals } from "vega-lite/build/src/parameter";
 import { TRAIL } from "vega-lite/build/src/mark";
+import { METHODS } from "http";
 
 const description =
 	"A container component that divides the layout into sections, with an optional title.";
+
+const defaultSpec = {
+	$schema: "https://vega.github.io/schema/vega-lite/v5.json",
+	description,
+	data: {
+		values: [
+			{ a: "A", b: 100 },
+			{ a: "B", b: 200 },
+			{ a: "C", b: 150 },
+			{ a: "D", b: 300 },
+		],
+	},
+	mark: "bar",
+	encoding: {
+		x: { field: "a", type: "nominal" },
+		y: { field: "b", type: "quantitative" },
+	},
+};
 
 export default {
 	streamsync: {
@@ -75,11 +94,12 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { inject } from "vue";
+import { inject, watch, ref } from "vue";
 import injectionKeys from "../injectionKeys";
 
 const ss = inject(injectionKeys.core);
 const instancePath = inject(injectionKeys.instancePath);
+const fields = inject(injectionKeys.evaluatedFields);
 const disablingIds = ["laser-toggle"]
 var buttonsDisabled = false
 
@@ -164,8 +184,6 @@ function captureChange(event: Event) {
 	toggleDisableInputs(componentId, inputValue)
 	ss.forwardEvent(customEvent, instancePath, true)
 }
-
-const fields = inject(injectionKeys.evaluatedFields);
 </script>
 
 <style scoped>

@@ -42,14 +42,15 @@
             "type": "custom_customsection",
             "content": {
                 "title": "section 1",
-                "snapMode": "no"
+                "snapMode": "no",
+                "spec": "@{chart_spec}"
             },
             "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
             "position": 1,
             "handlers": {
-                "click": "click_handler",
                 "input": "input_handler",
-                "change": "select_handler"
+                "change": "select_handler",
+                "click": "click_handler"
             },
             "visible": true
         },
@@ -59,14 +60,14 @@
             "content": {
                 "label": "DEATH STAR LASER",
                 "customId": "laser-toggle",
-                "options": "{\n  \"yes\": \"ON\",\n  \"no\": \"OFF\"\n}"
+                "options": "{\"yes\": \"ON\", \"no\": \"OFF\"}"
             },
             "parentId": "3wtzxaiwrbvgqshf",
             "position": 0,
             "handlers": {},
             "binding": {
                 "eventType": "ss-option-change",
-                "stateRef": "inputs_disabled"
+                "stateRef": "is_disabled"
             },
             "visible": true
         },
@@ -101,32 +102,16 @@
             "handlers": {},
             "visible": true
         },
-        "ldc61rqxud3l3mma": {
-            "id": "ldc61rqxud3l3mma",
-            "type": "custom_customtextinput",
-            "content": {
-                "label": "laser power:",
-                "customId": "laser-power",
-                "placeholder": ""
-            },
-            "parentId": "rza8f45mf8u4weh0",
-            "position": 0,
-            "binding": {
-                "eventType": "ss-change",
-                "stateRef": "temp_power"
-            },
-            "visible": true
-        },
         "mc29r0zgdduuvozw": {
             "id": "mc29r0zgdduuvozw",
             "type": "custom_custombutton",
             "content": {
                 "text": "SET POWER LEVEL",
                 "customId": "set-power",
-                "isDisabled": "@{inputs_disabled}"
+                "isDisabled": "@{is_disabled}"
             },
             "parentId": "rza8f45mf8u4weh0",
-            "position": 1,
+            "position": 0,
             "handlers": {},
             "visible": true
         },
@@ -222,12 +207,11 @@
                 "customId": "laser-target",
                 "placeholder": "alderaan"
             },
-            "parentId": "rza8f45mf8u4weh0",
+            "parentId": "3wtzxaiwrbvgqshf",
             "position": 2,
-            "handlers": {},
             "binding": {
                 "eventType": "ss-change",
-                "stateRef": "@{temp_target}"
+                "stateRef": "temp_target"
             },
             "visible": true
         },
@@ -237,11 +221,116 @@
             "content": {
                 "text": "LOCK TARGET",
                 "customId": "set-target",
-                "isDisabled": "@{inputs_disabled}"
+                "isDisabled": "@{is_disabled}"
             },
             "parentId": "rza8f45mf8u4weh0",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "ldc61rqxud3l3mma": {
+            "id": "ldc61rqxud3l3mma",
+            "type": "custom_customtextinput",
+            "content": {
+                "label": "laser power:",
+                "customId": "laser-power",
+                "placeholder": ""
+            },
+            "parentId": "3wtzxaiwrbvgqshf",
+            "position": 1,
+            "binding": {
+                "eventType": "ss-change",
+                "stateRef": "temp_power"
+            },
+            "visible": true
+        },
+        "wvuolyyavtoqoqa6": {
+            "id": "wvuolyyavtoqoqa6",
+            "type": "separator",
+            "content": {},
+            "parentId": "5xfassmzz91u4fqk",
             "position": 3,
             "handlers": {},
+            "visible": true
+        },
+        "vkkjkb8il6cufg1k": {
+            "id": "vkkjkb8il6cufg1k",
+            "type": "columns",
+            "content": {},
+            "parentId": "c5s5zqkq01w2t19q",
+            "position": 2,
+            "handlers": {},
+            "visible": true
+        },
+        "9robl1cd566bj8k5": {
+            "id": "9robl1cd566bj8k5",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "vkkjkb8il6cufg1k",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "dq1vxuzf1cy3bbbq": {
+            "id": "dq1vxuzf1cy3bbbq",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "vkkjkb8il6cufg1k",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "b9jjp9gb7fqtp2mq": {
+            "id": "b9jjp9gb7fqtp2mq",
+            "type": "custom_customvegachart",
+            "content": {
+                "spec": "@{chart_spec}",
+                "customId": "chartTargetEl"
+            },
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "position": 2,
+            "handlers": {},
+            "visible": true
+        },
+        "m7y9enf40ja86fck": {
+            "id": "m7y9enf40ja86fck",
+            "type": "plotlygraph",
+            "content": {
+                "spec": "@{plotly_spec}"
+            },
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "position": 3,
+            "handlers": {},
+            "visible": true
+        },
+        "aar3dm4fa3equ3fx": {
+            "id": "aar3dm4fa3equ3fx",
+            "type": "button",
+            "content": {
+                "text": "to 10"
+            },
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "position": 4,
+            "handlers": {
+                "ss-click": "plotly_test_ten"
+            },
+            "visible": true
+        },
+        "qhz2aai5lcan9fyc": {
+            "id": "qhz2aai5lcan9fyc",
+            "type": "button",
+            "content": {
+                "text": "to 50"
+            },
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "position": 5,
+            "handlers": {
+                "ss-click": "plotly_test_fifty"
+            },
             "visible": true
         }
     }
