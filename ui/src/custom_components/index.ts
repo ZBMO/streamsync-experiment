@@ -3,7 +3,7 @@
 
 import CustomSection from './CustomCoreSection.vue';
 import CustomButton from './CustomCoreButton.vue';
-import CustomDropDown from './inputs/CoreDropDownInput.vue';
+import CustomDropDown from './inputs/CoreDropdownInput.vue';
 import CustomTextInput from './inputs/CoreTextInput.vue';
 import CustomVegaChart from './CustomCoreVegaLiteChart.vue';
 import CustomNumberInput from './inputs/CustomNumberInput.vue';
