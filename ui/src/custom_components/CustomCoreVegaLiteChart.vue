@@ -1,5 +1,5 @@
 <template>
-	<div class="CoreNumberInput" ref="rootEl">
+	<!-- <div class="CoreNumberInput" ref="rootEl">
 		<label>{{ fields.label.value }}</label>
 		<input
 			type="number"
@@ -12,7 +12,7 @@
 			:max="fields.maxValue.value !== null ? fields.maxValue.value : undefined"
 			:step="fields.valueStep.value !== null ? fields.valueStep.value : undefined"
 		/>
-	</div>
+	</div> -->
 
 	<div class="CoreVegaLiteChart" ref="rootEl">
 		<div>
@@ -25,6 +25,7 @@
 <script lang="ts">
 import { FieldType } from "../streamsyncTypes";
 import { cssClasses } from "../renderer/sharedStyleFields";
+import { options } from "marked";
 
 const description = "A component that displays Vega-Lite/Altair charts.";
 
@@ -75,33 +76,36 @@ export default {
 				init: "Input CustomId",
 				type: FieldType.Text,
 			},
-			label: {
-				name: "Label",
-				init: "Input Label",
-				type: FieldType.Text,
-			},
-			placeholder: {
-				name: "Placeholder",
-				type: FieldType.Text,
-			},
-			minValue: {
-				name: "Minimum value",
-				type: FieldType.Number,
-				default: null
-			},
-			maxValue: {
-				name: "Max value",
-				type: FieldType.Number,
-				default: null
-			},
-			valueStep: {
-				name: "Step",
-				type: FieldType.Number,
-				default: "1"
-			},
+			// label: {
+			// 	name: "Label",
+			// 	init: "Input Label",
+			// 	type: FieldType.Text,
+			// },
+			// placeholder: {
+			// 	name: "Placeholder",
+			// 	type: FieldType.Text,
+			// },
+			// minValue: {
+			// 	name: "Minimum value",
+			// 	type: FieldType.Number,
+			// 	default: null
+			// },
+			// maxValue: {
+			// 	name: "Max value",
+			// 	type: FieldType.Number,
+			// 	default: null
+			// },
+			// valueStep: {
+			// 	name: "Step",
+			// 	type: FieldType.Number,
+			// 	default: "1"
+			// },
 			cssClasses,
 		},
 	},
+	computed: {
+		
+	}
 };
 </script>
 
@@ -163,7 +167,8 @@ watch(
 	(spec) => {
 		if (!spec) return;
 		renderChart();
-	}
+	},
+	{ deep: true, immediate: true },
 );
 
 onMounted(() => {

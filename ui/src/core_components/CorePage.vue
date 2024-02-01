@@ -1,8 +1,9 @@
 <template>
 	<div class="CorePage" ref="rootEl">
-		<div class="sidebarContainer">
+		<div class="sidebarContainer"
+		>
 			<slot
-				:component-filter="(c: Component) => c.type == 'sidebar'"
+				:component-filter="(c: Component) => c.type.includes('sidebar')"
 				:positionless-slot="true"
 			></slot>
 		</div>
@@ -15,7 +16,7 @@
 			data-streamsync-container
 		>
 			<slot
-				:component-filter="(c: Component) => c.type != 'sidebar'"
+				:component-filter="(c: Component) => !c.type.includes('sidebar')"
 			></slot>
 		</div>
 	</div>
@@ -107,10 +108,21 @@ import injectionKeys from "../injectionKeys";
 
 const rootEl:Ref<HTMLElement> = ref(null);
 const fields = inject(injectionKeys.evaluatedFields);
+const ss = inject(injectionKeys.core);
 
 function handleKeydown (ev: KeyboardEvent) {
 	const ssEv = getKeydown(ev);
 	rootEl.value.dispatchEvent(ssEv);
+}
+function captureClick(event: Event) {
+	const targetEl: HTMLElement = (event.target as HTMLElement).closest(
+		"[data-streamsync-id]"
+	);
+	var component = ss.getComponentById(targetEl.dataset.streamsyncId)
+
+	console.log('sb component:')
+	console.log(component)
+
 }
 
 function emitPageOpenEvent () {

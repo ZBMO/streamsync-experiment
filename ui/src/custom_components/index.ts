@@ -6,7 +6,9 @@ import CustomButton from './CustomCoreButton.vue';
 import CustomDropDown from './inputs/CoreDropDownInput.vue';
 import CustomTextInput from './inputs/CoreTextInput.vue';
 import CustomVegaChart from './CustomCoreVegaLiteChart.vue';
+import CustomPlotlyGraph from './CustomPlotlyGraph.vue';
 import CustomNumberInput from './inputs/CustomNumberInput.vue';
+import CustomSideBar from './CustomSideBar.vue';
 
 // Export an object with the ids and the templates as default
 
@@ -16,5 +18,7 @@ export default {
     "customdropdown": CustomDropDown,
     "customtextinput": CustomTextInput,
     "customvegachart": CustomVegaChart,
+    "customplotlygraph": CustomPlotlyGraph,
     "customnumberinput": CustomNumberInput,
+    "sidebar": CustomSideBar,
 }

@@ -101,6 +101,7 @@ const ss = inject(injectionKeys.core);
 const instancePath = inject(injectionKeys.instancePath);
 const fields = inject(injectionKeys.evaluatedFields);
 const disablingIds = ["laser-toggle"]
+const ignoreClickComponents = ["tab"]
 var buttonsDisabled = false
 
 
@@ -127,7 +128,24 @@ function isCorrectInputType(event: Event, expectedTypes): boolean {
     return expectedTypes.includes(type)
 }
 
+function ignoreClick(event) {
+	const targetEl: HTMLElement = (event.target as HTMLElement).closest(
+		"[data-streamsync-id]"
+	);
+	var component = ss.getComponentById(targetEl.dataset.streamsyncId)
+
+	if (component["type"] in ignoreClickComponents) {
+		return true
+	} else {
+		return false
+	}
+}
+
 function captureClick(event: Event) {
+	if (ignoreClick(event)) {
+		return
+	}
+
     event.stopPropagation()
     if (!isCorrectInputType(event, ["BUTTON"])) { return }
 	if (buttonsDisabled) { return }
