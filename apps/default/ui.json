@@ -253,17 +253,6 @@
             "handlers": {},
             "visible": true
         },
-        "x177kfyd08czyxf1": {
-            "id": "x177kfyd08czyxf1",
-            "type": "custom_customplotlygraph",
-            "content": {
-                "spec": "@{plotly_spec}"
-            },
-            "parentId": "u0hka0rpowhr92qn",
-            "position": 1,
-            "handlers": {},
-            "visible": true
-        },
         "ka51brnshfolyz0h": {
             "id": "ka51brnshfolyz0h",
             "type": "custom_custombutton",
@@ -317,6 +306,59 @@
             "parentId": "u0hka0rpowhr92qn",
             "position": 0,
             "handlers": {},
+            "visible": true
+        },
+        "bu22v2tv8u0onxjb": {
+            "id": "bu22v2tv8u0onxjb",
+            "type": "tabs",
+            "parentId": "5h6ngl6uo9cv9k0g",
+            "content": {},
+            "handlers": {},
+            "position": 2,
+            "visible": true
+        },
+        "3w3zbhbybc92z8xo": {
+            "id": "3w3zbhbybc92z8xo",
+            "type": "tab",
+            "parentId": "bu22v2tv8u0onxjb",
+            "content": {
+                "name": "frst"
+            },
+            "handlers": {},
+            "position": 0,
+            "visible": true
+        },
+        "siv0k7m54lacdbh5": {
+            "id": "siv0k7m54lacdbh5",
+            "type": "tab",
+            "parentId": "bu22v2tv8u0onxjb",
+            "content": {
+                "name": "secnsd"
+            },
+            "handlers": {},
+            "position": 1,
+            "visible": true
+        },
+        "gztk7t9kha39h32a": {
+            "id": "gztk7t9kha39h32a",
+            "type": "text",
+            "parentId": "3w3zbhbybc92z8xo",
+            "content": {
+                "text": "1"
+            },
+            "handlers": {},
+            "position": 0,
+            "visible": true
+        },
+        "h2i1krbs4v8raco6": {
+            "id": "h2i1krbs4v8raco6",
+            "type": "text",
+            "parentId": "siv0k7m54lacdbh5",
+            "content": {
+                "text": "2"
+            },
+            "handlers": {},
+            "position": 0,
             "visible": true
         }
     }
