@@ -114,7 +114,7 @@ function toggleDisableInputs(id: string, value: String) {
 function getIdentifier(event: Event): string {
 	const targetEl: HTMLElement = (event.target as HTMLElement).closest(
 		"[data-streamsync-id]"
-	);
+	)
 
 	var component = ss.getComponentById(targetEl.dataset.streamsyncId)
 	var customId = component.content["customId"]
@@ -134,11 +134,7 @@ function ignoreClick(event) {
 	);
 	var component = ss.getComponentById(targetEl.dataset.streamsyncId)
 
-	if (component["type"] in ignoreClickComponents) {
-		return true
-	} else {
-		return false
-	}
+	return ignoreClickComponents.includes(component["type"])
 }
 
 function captureClick(event: Event) {

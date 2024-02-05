@@ -1,21 +1,33 @@
+import copy
 import streamsync as ss
 import json
 
 print("Good day sir!")
 
 def click_handler(state, payload):
+    if ("id" not in payload.keys()):
+        print('no id found')
+        return
+
     print("click_handler")
     print(payload)
+
     if (payload["id"] == "set-power"):
         state["power"] = state["temp_power"]
     if (payload["id"] == "set-target"):
         state["target"] = state["temp_target"]
 
 def plotly_test_ten(state):
-    state["plotly_spec"]["data"][0]["y"][0] = 10
+    print("ten")
+    s = state["plotly_spec"]["data"]
+    s[0]["y"][0] = 10
+    state["plotly_spec"]["data"] = copy.copy(s)
 
 def plotly_test_fifty(state):
-    state["plotly_spec"]["data"][0]["y"][1] = 50
+    print("fifty")
+    s = state["plotly_spec"]["data"]
+    s[0]["y"][0] = 50
+    state["plotly_spec"]["data"] = copy.copy(s)
         
 def input_handler(state, payload):
     print("input payload:") 
@@ -31,14 +43,12 @@ def input_handler(state, payload):
         state["chart_spec"]["data"]["values"][int(index)]["value"] = payload["value"]
         print(state["chart_spec"])
     
-
 def select_handler(state, payload):
     print("select handler")
     print(payload)
     if (payload["id"] == "laser-toggle"):
         state["is_disabled"] = payload["value"]
     
-
 # Initialise the state
 initial_state = ss.init_state({
     "my_app": {
@@ -56,13 +66,13 @@ initial_state = ss.init_state({
         "data": [
             {
                 "x": ["a", "b", "ddd"],
-                "y": [22, 25, 29],
-                "type": "bar",
+                "y": [2, 2, 5],
+                "type": "line",
             },
         ],
     },
     "chart_spec": {
-        "$schema": "../vega-lite-schema.json",
+        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
         "description": "A simple bar chart with embedded data.",
         "width": 1000,
         "data": {

@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "streamsync_version": "0.2.8"
+        "streamsync_version": "0.3.0"
     },
     "components": {
         "root": {
@@ -253,84 +253,70 @@
             "handlers": {},
             "visible": true
         },
-        "vkkjkb8il6cufg1k": {
-            "id": "vkkjkb8il6cufg1k",
-            "type": "columns",
-            "content": {},
-            "parentId": "c5s5zqkq01w2t19q",
-            "position": 2,
-            "handlers": {},
-            "visible": true
-        },
-        "9robl1cd566bj8k5": {
-            "id": "9robl1cd566bj8k5",
-            "type": "column",
+        "x177kfyd08czyxf1": {
+            "id": "x177kfyd08czyxf1",
+            "type": "custom_customplotlygraph",
             "content": {
-                "width": "1"
+                "spec": "@{plotly_spec}"
             },
-            "parentId": "vkkjkb8il6cufg1k",
-            "position": 0,
-            "handlers": {},
-            "visible": true
-        },
-        "dq1vxuzf1cy3bbbq": {
-            "id": "dq1vxuzf1cy3bbbq",
-            "type": "column",
-            "content": {
-                "width": "1"
-            },
-            "parentId": "vkkjkb8il6cufg1k",
+            "parentId": "u0hka0rpowhr92qn",
             "position": 1,
             "handlers": {},
             "visible": true
         },
-        "b9jjp9gb7fqtp2mq": {
-            "id": "b9jjp9gb7fqtp2mq",
-            "type": "custom_customvegachart",
+        "ka51brnshfolyz0h": {
+            "id": "ka51brnshfolyz0h",
+            "type": "custom_custombutton",
             "content": {
-                "spec": "@{chart_spec}",
-                "customId": "chartTargetEl"
+                "text": "to 50",
+                "customId": "Button CustomId"
             },
-            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
-            "position": 2,
-            "handlers": {},
-            "visible": true
-        },
-        "m7y9enf40ja86fck": {
-            "id": "m7y9enf40ja86fck",
-            "type": "plotlygraph",
-            "content": {
-                "spec": "@{plotly_spec}"
-            },
-            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
-            "position": 3,
-            "handlers": {},
-            "visible": true
-        },
-        "aar3dm4fa3equ3fx": {
-            "id": "aar3dm4fa3equ3fx",
-            "type": "button",
-            "content": {
-                "text": "to 10"
-            },
-            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
-            "position": 4,
-            "handlers": {
-                "ss-click": "plotly_test_ten"
-            },
-            "visible": true
-        },
-        "qhz2aai5lcan9fyc": {
-            "id": "qhz2aai5lcan9fyc",
-            "type": "button",
-            "content": {
-                "text": "to 50"
-            },
-            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
-            "position": 5,
+            "parentId": "5h6ngl6uo9cv9k0g",
+            "position": 1,
             "handlers": {
                 "ss-click": "plotly_test_fifty"
             },
+            "visible": true
+        },
+        "cxn29bxsm17psz4q": {
+            "id": "cxn29bxsm17psz4q",
+            "type": "columns",
+            "content": {},
+            "parentId": "5xfassmzz91u4fqk",
+            "position": 4,
+            "handlers": {},
+            "visible": true
+        },
+        "u0hka0rpowhr92qn": {
+            "id": "u0hka0rpowhr92qn",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "cxn29bxsm17psz4q",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "yuy67t3vf6xf4lkx": {
+            "id": "yuy67t3vf6xf4lkx",
+            "type": "custom_customdropdown",
+            "content": {
+                "label": "Input Label",
+                "customId": "Dropdown CustomId"
+            },
+            "parentId": "5h6ngl6uo9cv9k0g",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "5h6ngl6uo9cv9k0g": {
+            "id": "5h6ngl6uo9cv9k0g",
+            "type": "horizontalstack",
+            "content": {},
+            "parentId": "u0hka0rpowhr92qn",
+            "position": 0,
+            "handlers": {},
             "visible": true
         }
     }
