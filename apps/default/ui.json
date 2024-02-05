@@ -261,7 +261,7 @@
                 "customId": "Button CustomId"
             },
             "parentId": "5h6ngl6uo9cv9k0g",
-            "position": 1,
+            "position": 2,
             "handlers": {
                 "ss-click": "plotly_test_fifty"
             },
@@ -308,57 +308,85 @@
             "handlers": {},
             "visible": true
         },
-        "bu22v2tv8u0onxjb": {
-            "id": "bu22v2tv8u0onxjb",
-            "type": "tabs",
-            "parentId": "5h6ngl6uo9cv9k0g",
+        "1cuv7bqomcjk3y09": {
+            "id": "1cuv7bqomcjk3y09",
+            "type": "custom_customtabs",
             "content": {},
-            "handlers": {},
-            "position": 2,
-            "visible": true
-        },
-        "3w3zbhbybc92z8xo": {
-            "id": "3w3zbhbybc92z8xo",
-            "type": "tab",
-            "parentId": "bu22v2tv8u0onxjb",
-            "content": {
-                "name": "frst"
-            },
-            "handlers": {},
-            "position": 0,
-            "visible": true
-        },
-        "siv0k7m54lacdbh5": {
-            "id": "siv0k7m54lacdbh5",
-            "type": "tab",
-            "parentId": "bu22v2tv8u0onxjb",
-            "content": {
-                "name": "secnsd"
-            },
-            "handlers": {},
+            "parentId": "5h6ngl6uo9cv9k0g",
             "position": 1,
-            "visible": true
-        },
-        "gztk7t9kha39h32a": {
-            "id": "gztk7t9kha39h32a",
-            "type": "text",
-            "parentId": "3w3zbhbybc92z8xo",
-            "content": {
-                "text": "1"
-            },
             "handlers": {},
-            "position": 0,
             "visible": true
         },
-        "h2i1krbs4v8raco6": {
-            "id": "h2i1krbs4v8raco6",
+        "i4ghc7c1ltr4y1cp": {
+            "id": "i4ghc7c1ltr4y1cp",
+            "type": "custom_customtab",
+            "content": {
+                "name": "Pulser 1",
+                "cssClasses": "",
+                "customId": "pulser_one_"
+            },
+            "parentId": "1cuv7bqomcjk3y09",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "5qtmczudmu4yumv0": {
+            "id": "5qtmczudmu4yumv0",
+            "type": "custom_customtab",
+            "content": {
+                "name": "Pulser 2",
+                "cssClasses": "",
+                "customId": "pulser_two_"
+            },
+            "parentId": "1cuv7bqomcjk3y09",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "9iplnhprcdzqxfzp": {
+            "id": "9iplnhprcdzqxfzp",
             "type": "text",
-            "parentId": "siv0k7m54lacdbh5",
             "content": {
                 "text": "2"
             },
-            "handlers": {},
+            "parentId": "5qtmczudmu4yumv0",
             "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "m86wr6u38p6grvw9": {
+            "id": "m86wr6u38p6grvw9",
+            "type": "text",
+            "content": {
+                "text": "1"
+            },
+            "parentId": "i4ghc7c1ltr4y1cp",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "72woznye4gs83d8s": {
+            "id": "72woznye4gs83d8s",
+            "type": "custom_custombutton",
+            "content": {
+                "text": "Chiller",
+                "customId": "chiller"
+            },
+            "parentId": "5qtmczudmu4yumv0",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "8i55n3srhuqqv7tg": {
+            "id": "8i55n3srhuqqv7tg",
+            "type": "custom_custombutton",
+            "content": {
+                "text": "Chiller",
+                "customId": "chiller"
+            },
+            "parentId": "i4ghc7c1ltr4y1cp",
+            "position": 1,
+            "handlers": {},
             "visible": true
         }
     }

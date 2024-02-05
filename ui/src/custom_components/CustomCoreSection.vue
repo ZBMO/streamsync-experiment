@@ -81,7 +81,6 @@ import injectionKeys from "../injectionKeys";
 const ss = inject(injectionKeys.core);
 const instancePath = inject(injectionKeys.instancePath);
 const disablingIds = ["laser-toggle"]
-const ignoreClickComponents = ["tab"]
 var buttonsDisabled = false
 
 
@@ -91,16 +90,27 @@ function toggleDisableInputs(id: string, value: String) {
 	}
 }
 
+function getParentTabId(target: HTMLElement): string {
+	const targetEl: HTMLElement = (target as HTMLElement).closest(
+		".CoreTab"
+	);
+	var tab = ss.getComponentById(targetEl.dataset.streamsyncId)
+	var customId = tab.content["customId"]
+	return customId
+}
+
 function getIdentifier(event: Event): string {
 	const targetEl: HTMLElement = (event.target as HTMLElement).closest(
 		"[data-streamsync-id]"
 	);
-
 	var component = ss.getComponentById(targetEl.dataset.streamsyncId)
-	var customId = component.content["customId"]
+	var targetId = component.content["customId"]
+	var parentId = getParentTabId(targetEl)
+	var compositeId = parentId + targetId
+
 	var defaultId = targetEl.dataset.streamsyncId
 
-	return (customId != "") ? customId : defaultId
+	return (compositeId != "") ? compositeId : defaultId
 }
 
 function isCorrectInputType(event: Event, expectedTypes): boolean {
@@ -108,17 +118,17 @@ function isCorrectInputType(event: Event, expectedTypes): boolean {
     return expectedTypes.includes(type)
 }
 
-function ignoreClick(event) {
+function ignoreTabClick(event) {
 	const targetEl: HTMLElement = (event.target as HTMLElement).closest(
 		"[data-streamsync-id]"
 	);
 	var component = ss.getComponentById(targetEl.dataset.streamsyncId)
 
-	return ignoreClickComponents.includes(component["type"])
+	return component["type"].includes("tab")
 }
 
 function captureClick(event: Event) {
-	if (ignoreClick(event)) {
+	if (ignoreTabClick(event)) {
 		return
 	}
 
