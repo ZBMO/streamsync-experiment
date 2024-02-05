@@ -1,6 +1,5 @@
 import copy
 import streamsync as ss
-import json
 
 print("Good day sir!")
 
@@ -11,10 +10,10 @@ def click_handler(state, payload):
 
     print("click_handler")
     print(payload)
-
-    if (payload["id"] == "set-power"):
+    if (payload["id"] == "targeting_set-power"):
         state["power"] = state["temp_power"]
-    if (payload["id"] == "set-target"):
+
+    if (payload["id"] == "targeting_set-target"):
         state["target"] = state["temp_target"]
 
 def plotly_test_ten(state):
@@ -29,25 +28,31 @@ def plotly_test_fifty(state):
     s[0]["y"][0] = 50
     state["plotly_spec"]["data"] = copy.copy(s)
         
-def input_handler(state, payload):
-    print("input payload:") 
+def on_off(state, payload):
     print(payload)
-    if (payload["id"] == "laser-power"):
-        state["temp_power"] = payload["value"]
-    if (payload["id"] == "laser-target"):
-        state["temp_target"] = payload["value"]
-    if (payload["id"] == "graph-indexer"):
-        state["change_index"] = payload["value"]
-    if (payload["id"] == "graph-setter"):
-        index = state["change_index"]
-        state["chart_spec"]["data"]["values"][int(index)]["value"] = payload["value"]
-        print(state["chart_spec"])
+    
+
+def change_plotly_graph(state, value):
+    index = state["selected_graph_index"]  
+    s = state["plotly_spec"]["data"]
+    s[0]["y"][int(index)] = value
+    state["plotly_spec"]["data"] = copy.copy(s)
+
     
 def select_handler(state, payload):
     print("select handler")
     print(payload)
     if (payload["id"] == "laser-toggle"):
         state["is_disabled"] = payload["value"]
+    if (payload["id"] == "graph_index_picker"):
+        state["selected_graph_index"] = payload["value"]
+    if (payload["id"] == "graph_selector"):
+        change_plotly_graph(state, payload["value"])
+    if (payload["id"] == "targeting_laser-power"):
+        state["temp_power"] = payload["value"]
+    if (payload["id"] == "targeting_laser-target"):
+        state["temp_target"] = payload["value"]
+
     
 # Initialise the state
 initial_state = ss.init_state({
@@ -61,11 +66,13 @@ initial_state = ss.init_state({
     "target": "",
     "power": 0,
     "is_disabled": "no",
-    "change_index": "", 
+    "change_index": "",
+    "graph_index": {"0": "a", "1": "b", "2": "c"},
+    "selected_graph_index": "",
     "plotly_spec": {
         "data": [
             {
-                "x": ["a", "b", "ddd"],
+                "x": ["a", "b", "c"],
                 "y": [2, 2, 5],
                 "type": "line",
             },
@@ -95,3 +102,5 @@ initial_state = ss.init_state({
             "y": {"field": "value", "type": "quantitative", "title": "Value"}
         }
 }})
+
+

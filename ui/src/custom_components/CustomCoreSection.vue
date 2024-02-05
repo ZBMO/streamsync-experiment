@@ -128,6 +128,8 @@ function ignoreTabClick(event) {
 }
 
 function captureClick(event: Event) {
+	console.log('captureClick: ')
+	console.log(event)
 	if (ignoreTabClick(event)) {
 		return
 	}
@@ -148,6 +150,8 @@ function captureClick(event: Event) {
 }
 
 function captureInput(event: Event) {
+	console.log('captureInput: ')
+	console.log(event)
     event.stopPropagation()
     if (!isCorrectInputType(event, ["INPUT"])) { return }
 
@@ -169,7 +173,8 @@ function captureInput(event: Event) {
 }
 
 function captureChange(event: Event) {
-	console.log('captureChange event')
+	console.log('captureChange: ')
+	console.log(event)
 	event.stopPropagation()
     if (!isCorrectInputType(event, ["SELECT", "INPUT"])) { return }
 

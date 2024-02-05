@@ -48,7 +48,6 @@
             "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
             "position": 1,
             "handlers": {
-                "input": "input_handler",
                 "change": "select_handler",
                 "click": "click_handler"
             },
@@ -60,11 +59,13 @@
             "content": {
                 "label": "DEATH STAR LASER",
                 "customId": "laser-toggle",
-                "options": "{\"yes\": \"ON\", \"no\": \"OFF\"}"
+                "options": "{\"ON\": \"ON\", \"OFF\": \"OFF\"}"
             },
-            "parentId": "3wtzxaiwrbvgqshf",
-            "position": 0,
-            "handlers": {},
+            "parentId": "o655fwalnpnecky4",
+            "position": 4,
+            "handlers": {
+                "ss-option-change": "on_off"
+            },
             "binding": {
                 "eventType": "ss-option-change",
                 "stateRef": "is_disabled"
@@ -75,8 +76,8 @@
             "id": "ecxpr4ymofpl08ax",
             "type": "columns",
             "content": {},
-            "parentId": "5xfassmzz91u4fqk",
-            "position": 0,
+            "parentId": "mfadhz0bmr4vkpa6",
+            "position": 1,
             "handlers": {},
             "visible": true
         },
@@ -86,7 +87,7 @@
             "content": {
                 "width": "1"
             },
-            "parentId": "ecxpr4ymofpl08ax",
+            "parentId": "b2737mojqsfsey4e",
             "position": 0,
             "handlers": {},
             "visible": true
@@ -97,7 +98,7 @@
             "content": {
                 "width": "1"
             },
-            "parentId": "ecxpr4ymofpl08ax",
+            "parentId": "b2737mojqsfsey4e",
             "position": 1,
             "handlers": {},
             "visible": true
@@ -115,32 +116,12 @@
             "handlers": {},
             "visible": true
         },
-        "1alr47j8phuj0rod": {
-            "id": "1alr47j8phuj0rod",
-            "type": "columns",
-            "content": {},
-            "parentId": "5xfassmzz91u4fqk",
-            "position": 2,
-            "handlers": {},
-            "visible": true
-        },
-        "c5s5zqkq01w2t19q": {
-            "id": "c5s5zqkq01w2t19q",
-            "type": "column",
-            "content": {
-                "width": "1"
-            },
-            "parentId": "1alr47j8phuj0rod",
-            "position": 0,
-            "handlers": {},
-            "visible": true
-        },
         "a5xqhsfc4yjcyxr1": {
             "id": "a5xqhsfc4yjcyxr1",
             "type": "separator",
             "content": {},
             "parentId": "5xfassmzz91u4fqk",
-            "position": 1,
+            "position": 0,
             "handlers": {},
             "visible": true
         },
@@ -150,7 +131,7 @@
             "content": {
                 "text": "@{target}"
             },
-            "parentId": "c5s5zqkq01w2t19q",
+            "parentId": "a1tfs4tii8gm472j",
             "position": 1,
             "handlers": {},
             "visible": true
@@ -161,19 +142,8 @@
             "content": {
                 "text": "TARGET"
             },
-            "parentId": "c5s5zqkq01w2t19q",
+            "parentId": "oqku68oz4t57u6an",
             "position": 0,
-            "handlers": {},
-            "visible": true
-        },
-        "w7wiiyf28cxp27hy": {
-            "id": "w7wiiyf28cxp27hy",
-            "type": "column",
-            "content": {
-                "width": "1"
-            },
-            "parentId": "1alr47j8phuj0rod",
-            "position": 1,
             "handlers": {},
             "visible": true
         },
@@ -183,7 +153,7 @@
             "content": {
                 "text": "POWER"
             },
-            "parentId": "w7wiiyf28cxp27hy",
+            "parentId": "a1tfs4tii8gm472j",
             "position": 0,
             "handlers": {},
             "visible": true
@@ -194,7 +164,7 @@
             "content": {
                 "text": "@{power}"
             },
-            "parentId": "w7wiiyf28cxp27hy",
+            "parentId": "oqku68oz4t57u6an",
             "position": 1,
             "handlers": {},
             "visible": true
@@ -208,7 +178,7 @@
                 "placeholder": "alderaan"
             },
             "parentId": "3wtzxaiwrbvgqshf",
-            "position": 2,
+            "position": 1,
             "binding": {
                 "eventType": "ss-change",
                 "stateRef": "temp_target"
@@ -237,33 +207,10 @@
                 "placeholder": ""
             },
             "parentId": "3wtzxaiwrbvgqshf",
-            "position": 1,
+            "position": 0,
             "binding": {
                 "eventType": "ss-change",
                 "stateRef": "temp_power"
-            },
-            "visible": true
-        },
-        "wvuolyyavtoqoqa6": {
-            "id": "wvuolyyavtoqoqa6",
-            "type": "separator",
-            "content": {},
-            "parentId": "5xfassmzz91u4fqk",
-            "position": 3,
-            "handlers": {},
-            "visible": true
-        },
-        "ka51brnshfolyz0h": {
-            "id": "ka51brnshfolyz0h",
-            "type": "custom_custombutton",
-            "content": {
-                "text": "to 50",
-                "customId": "Button CustomId"
-            },
-            "parentId": "5h6ngl6uo9cv9k0g",
-            "position": 2,
-            "handlers": {
-                "ss-click": "plotly_test_fifty"
             },
             "visible": true
         },
@@ -272,7 +219,7 @@
             "type": "columns",
             "content": {},
             "parentId": "5xfassmzz91u4fqk",
-            "position": 4,
+            "position": 1,
             "handlers": {},
             "visible": true
         },
@@ -294,8 +241,8 @@
                 "label": "Input Label",
                 "customId": "Dropdown CustomId"
             },
-            "parentId": "5h6ngl6uo9cv9k0g",
-            "position": 0,
+            "parentId": "i4ghc7c1ltr4y1cp",
+            "position": 2,
             "handlers": {},
             "visible": true
         },
@@ -313,7 +260,7 @@
             "type": "custom_customtabs",
             "content": {},
             "parentId": "5h6ngl6uo9cv9k0g",
-            "position": 1,
+            "position": 0,
             "handlers": {},
             "visible": true
         },
@@ -385,6 +332,154 @@
                 "customId": "chiller"
             },
             "parentId": "i4ghc7c1ltr4y1cp",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "o655fwalnpnecky4": {
+            "id": "o655fwalnpnecky4",
+            "type": "sidebar",
+            "content": {},
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "position": -2,
+            "handlers": {},
+            "visible": true
+        },
+        "fhq2vr50o5bum9ux": {
+            "id": "fhq2vr50o5bum9ux",
+            "type": "button",
+            "content": {
+                "text": "start"
+            },
+            "parentId": "o655fwalnpnecky4",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "y3pej1n61puuchgl": {
+            "id": "y3pej1n61puuchgl",
+            "type": "button",
+            "content": {
+                "text": "stop"
+            },
+            "parentId": "o655fwalnpnecky4",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "qo362zpwfok240m4": {
+            "id": "qo362zpwfok240m4",
+            "type": "button",
+            "content": {
+                "text": "open"
+            },
+            "parentId": "o655fwalnpnecky4",
+            "position": 2,
+            "handlers": {},
+            "visible": true
+        },
+        "ma7yrib4q9s586hz": {
+            "id": "ma7yrib4q9s586hz",
+            "type": "button",
+            "content": {
+                "text": "close"
+            },
+            "parentId": "o655fwalnpnecky4",
+            "position": 3,
+            "handlers": {},
+            "visible": true
+        },
+        "mfadhz0bmr4vkpa6": {
+            "id": "mfadhz0bmr4vkpa6",
+            "type": "custom_customtab",
+            "content": {
+                "name": "targeting",
+                "customId": "targeting_"
+            },
+            "parentId": "1cuv7bqomcjk3y09",
+            "position": 2,
+            "handlers": {},
+            "visible": true
+        },
+        "b2737mojqsfsey4e": {
+            "id": "b2737mojqsfsey4e",
+            "type": "columns",
+            "content": {},
+            "parentId": "mfadhz0bmr4vkpa6",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "oqku68oz4t57u6an": {
+            "id": "oqku68oz4t57u6an",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "ecxpr4ymofpl08ax",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "a1tfs4tii8gm472j": {
+            "id": "a1tfs4tii8gm472j",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "ecxpr4ymofpl08ax",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "q45qcfcsyck5mlhw": {
+            "id": "q45qcfcsyck5mlhw",
+            "type": "custom_customtab",
+            "content": {
+                "name": "GRAPH",
+                "customId": "graph_"
+            },
+            "parentId": "1cuv7bqomcjk3y09",
+            "position": 3,
+            "handlers": {},
+            "visible": true
+        },
+        "7h43dec36hn19pcd": {
+            "id": "7h43dec36hn19pcd",
+            "type": "plotlygraph",
+            "content": {
+                "spec": "@{plotly_spec}"
+            },
+            "parentId": "q45qcfcsyck5mlhw",
+            "position": 2,
+            "handlers": {},
+            "visible": true
+        },
+        "on8mwk0tnobxt2n7": {
+            "id": "on8mwk0tnobxt2n7",
+            "type": "custom_customdropdown",
+            "content": {
+                "label": "Graph index",
+                "customId": "index_picker",
+                "options": "@{graph_index}"
+            },
+            "parentId": "q45qcfcsyck5mlhw",
+            "position": 0,
+            "handlers": {},
+            "binding": {
+                "eventType": "ss-option-change",
+                "stateRef": "selected_graph_index"
+            },
+            "visible": true
+        },
+        "bs193rgb2kxs9yjr": {
+            "id": "bs193rgb2kxs9yjr",
+            "type": "custom_customnumberinput",
+            "content": {
+                "label": "change graph value",
+                "customId": "selector"
+            },
+            "parentId": "q45qcfcsyck5mlhw",
             "position": 1,
             "handlers": {},
             "visible": true
