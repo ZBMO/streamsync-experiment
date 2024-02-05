@@ -28,6 +28,8 @@ import {
 	buttonShadow,
 cssClasses,
 } from "../renderer/sharedStyleFields";
+import { assembleParameterSignals } from "vega-lite/build/src/parameter";
+import { TRAIL } from "vega-lite/build/src/mark";
 
 const description =
 	"A container component that divides the layout into sections, with an optional title.";
@@ -78,7 +80,6 @@ import injectionKeys from "../injectionKeys";
 
 const ss = inject(injectionKeys.core);
 const instancePath = inject(injectionKeys.instancePath);
-const fields = inject(injectionKeys.evaluatedFields);
 const disablingIds = ["laser-toggle"]
 const ignoreClickComponents = ["tab"]
 var buttonsDisabled = false
@@ -93,7 +94,7 @@ function toggleDisableInputs(id: string, value: String) {
 function getIdentifier(event: Event): string {
 	const targetEl: HTMLElement = (event.target as HTMLElement).closest(
 		"[data-streamsync-id]"
-	)
+	);
 
 	var component = ss.getComponentById(targetEl.dataset.streamsyncId)
 	var customId = component.content["customId"]
@@ -177,6 +178,8 @@ function captureChange(event: Event) {
 	toggleDisableInputs(componentId, inputValue)
 	ss.forwardEvent(customEvent, instancePath, true)
 }
+
+const fields = inject(injectionKeys.evaluatedFields);
 </script>
 
 <style scoped>
