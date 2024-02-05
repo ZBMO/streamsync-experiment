@@ -1,7 +1,6 @@
 <template>
 	<div class="CorePage" ref="rootEl">
-		<div class="sidebarContainer"
-		>
+		<div class="sidebarContainer">
 			<slot
 				:component-filter="(c: Component) => c.type == 'sidebar'"
 				:positionless-slot="true"
